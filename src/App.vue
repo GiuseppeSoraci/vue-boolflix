@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header @search="getData" />
-    <Content />
+    <Content :movies="movieList" :series="tvList" />
   </div>
 </template>
 
@@ -29,17 +29,28 @@ export default {
       console.log(searchText);
 
       if (searchText !== "") {
+        const apiParams = {
+          api_key: this.apiKey,
+          query: searchText,
+          language: "it-IT",
+        };
+
         // Movies
         axios
           .get(this.apiURL + "movie", {
-            params: {
-              api_key: this.apiKey,
-              query: searchText,
-              language: "it-IT",
-            },
+            params: apiParams,
           })
           .then((res) => {
             this.movieList = res.data.results;
+          });
+
+        // Series
+        axios
+          .get(this.apiURL + "tv", {
+            params: apiParams,
+          })
+          .then((res) => {
+            this.tvList = res.data.results;
           });
       }
     },

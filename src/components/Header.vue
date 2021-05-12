@@ -1,6 +1,6 @@
 <template>
   <header>
-    <img src="../assets/logo.png" alt="logo" />
+    <img src="../assets/img/logo.png" alt="logo" />
 
     <div>
       <input type="text" placeholder="Search" v-model.trim="searchText" />

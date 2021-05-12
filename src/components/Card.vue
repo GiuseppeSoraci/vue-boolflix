@@ -1,12 +1,23 @@
 <template>
   <div>
     <ul>
-      <li>{{ details.title }}</li>
-      <li>{{ details.original_title }}</li>
+      <li>{{ details.title ? details.title : details.name }}</li>
       <li>
-        <img v-if="isFlag(details.original_language)" src="" alt="" />
+        {{
+          details.original_title
+            ? details.original_title
+            : details.original_name
+        }}
+      </li>
+      <li>
+        <img
+          v-if="isFlag(details.original_language)"
+          :src="require(`@/assets/img/flags/${details.original_language}.png`)"
+          :alt="details.original_language"
+        />
         <span v-else>{{ details.original_language }}</span>
       </li>
+      <li>{{ details.vote_average }}</li>
     </ul>
   </div>
 </template>
@@ -30,4 +41,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+li img {
+  width: 32px;
+}
+</style>
