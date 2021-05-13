@@ -2,7 +2,7 @@
   <div>
     <img
       v-if="details.poster_path"
-      :src="`https://image-tmdb.org/t/p/w342${details.poster_path}`"
+      :src="`https://image.tmdb.org/t/p/w342${details.poster_path}`"
     />
     <img
       v-else
@@ -28,7 +28,7 @@
       </li>
       <li>
         <i
-          v-for="i in getStarVote(etails.vote_average)"
+          v-for="i in getStarVote(details.vote_average)"
           :key="`full-${i}`"
           class="fas fa-star"
         ></i>
@@ -58,13 +58,17 @@ export default {
       return this.flagsImg.includes(lang);
     },
     getStarVote(vote) {
-      return Math.cell(vote / 2);
+      return Math.ceil(vote / 2);
     },
   },
 };
 </script>
 
 <style scoped>
+img {
+  width: 342px;
+}
+
 li img {
   width: 32px;
 }
