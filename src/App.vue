@@ -58,4 +58,20 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+/* Generals */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Titillium Web", sans-serif;
+}
+
+li {
+  list-style: none;
+  color: #fff;
+}
+</style>
